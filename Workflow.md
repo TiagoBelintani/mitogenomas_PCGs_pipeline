@@ -66,7 +66,17 @@ Genus_species_accession
 
 Example:
 ```bash
-sed -i 's/ .*//' mitogenomes_raw.fasta
+awk '
+  /^>/ {
+    acc=$1; gsub(/^>/,"",acc);
+    genus=$2;
+    species=$3;
+    gsub(/\.1$/,"",acc);
+    print ">"genus"_"species"_"acc;
+    next
+  }
+  { print }
+' mitogenomes_raw.fasta > mitogenomes_renamed.fasta
 ```
 
 ---
