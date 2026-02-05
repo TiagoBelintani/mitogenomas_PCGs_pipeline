@@ -48,10 +48,11 @@ conda activate mito_pcgs
 efetch -db nucleotide -id NC_012345,NC_067890 -format fasta > mitogenomes_raw.fasta
 ```
 
-### Using a taxonomic query
+### Using a taxonomic query + size
 ```bash
-esearch -db nucleotide -query "Triatominae[Organism] AND mitochondrion[Filter]" \
-  | efetch -format fasta > mitogenomes_raw.fasta
+esearch -db nucleotide -query \
+"Triatominae[Organism] AND mitochondrion[Filter] AND 10000:25000[SLEN]" \
+| efetch -format gb > mitogenomes.gb
 ```
 
 ---
