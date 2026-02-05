@@ -130,13 +130,13 @@ done
 
 ## 6. Alignment Trimming (trimAl)
 
-### Strict trimming
+### Heuristic trimming
 ```bash
 mkdir trimmed_by_gene
 
 for f in aligned_by_gene/*.fasta; do
   gene=$(basename "$f")
-  trimal -in "$f" -out trimmed_by_gene/$gene -nogaps
+  trimal -in "$f" -out trimmed_by_gene/$gene -automated1
 done
 ```
 
@@ -194,3 +194,5 @@ iqtree2 -s mito_concat.fasta -p mito_partitions.txt -m MFP -B 1000 -nt AUTO
 ## License
 
 Academic and research use. Reuse with attribution.
+
+Tiago Belintani 2026 *Brave the Sun*
